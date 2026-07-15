@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>谢辰龙｜个人主页</title>
+  <meta
+    name="description"
+    content="谢辰龙的个人主页：艺术、经管、农业与工程。"
+  />
+
+  <style>
+    :root {
+      --background: #f5f5f7;
+      --surface: rgba(255, 255, 255, 0.72);
+      --surface-solid: #ffffff;
+      --text: #1d1d1f;
+      --secondary: #6e6e73;
+      --line: rgba(0, 0, 0, 0.08);
+      --accent: #0071e3;
+      --accent-hover: #0077ed;
+      --shadow: 0 24px 70px rgba(0, 0, 0, 0.08);
+      --radius-large: 32px;
+      --radius-medium: 22px;
+    }
+
+    body.dark {
+      --background: #000000;
+      --surface: rgba(28, 28, 30, 0.72);
+      --surface-solid: #1c1c1e;
+      --text: #f5f5f7;
+      --secondary: #a1a1a6;
+      --line: rgba(255, 255, 255, 0.12);
+      --shadow: 0 24px 70px rgba(0, 0, 0, 0.45);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--text);
+      background: var(--background);
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "SF Pro Display",
+        "SF Pro Text",
+        "PingFang SC",
+        "Microsoft YaHei",
+        Arial,
+        sans-serif;
+      transition:
+        background 0.35s ease,
+        color 0.35s ease;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+      width: 100%;
+      border-bottom: 1px solid var(--line);
+      background: color-mix(in srgb, var(--background) 72%, transparent);
+      backdrop-filter: saturate(180%) blur(22px);
+      -webkit-backdrop-filter: saturate(180%) blur(22px);
+    }
+
+    .nav-inner {
+      width: min(1120px, calc(100% - 40px));
+      height: 54px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      font-size: 15px;
+      font-weight: 650;
+      letter-spacing: -0.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 26px;
+      color: var(--secondary);
+      font-size: 13px;
+    }
+
+    .nav-links a {
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .theme-button {
+      width: 34px;
+      height: 34px;
+      padding: 0;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      color: var(--text);
+      background: var(--surface);
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      transition:
+        transform 0.2s ease,
+        background 0.2s ease;
+    }
+
+    .theme-button:hover {
+      transform: scale(1.06);
+    }
+
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      padding: 130px 24px 70px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    .glow {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.45;
+      pointer-events: none;
+      animation: float 9s ease-in-out infinite;
+    }
+
+    .glow-one {
+      top: 15%;
+      left: 12%;
+      width: 320px;
+      height: 320px;
+      background: #7d7aff;
+    }
+
+    .glow-two {
+      right: 10%;
+      bottom: 8%;
+      width: 360px;
+      height: 360px;
+      background: #62d5ff;
+      animation-delay: -3s;
+    }
+
+    .glow-three {
+      top: 30%;
+      right: 30%;
+      width: 220px;
+      height: 220px;
+      background: #ff8cc6;
+      animation-delay: -6s;
+    }
+
+    @keyframes float {
+      0%,
+      100% {
+        transform: translate3d(0, 0, 0) scale(1);
+      }
+
+      50% {
+        transform: translate3d(0, -28px, 0) scale(1.08);
+      }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      width: min(980px, 100%);
+    }
+
+    .eyebrow {
+      margin-bottom: 24px;
+      color: var(--secondary);
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      max-width: 980px;
+      margin: 0 auto;
+      font-size: clamp(52px, 8vw, 108px);
+      line-height: 0.98;
+      letter-spacing: -0.065em;
+      font-weight: 720;
+    }
+
+    .gradient-text {
+      color: transparent;
+      background:
+        linear-gradient(
+          110deg,
+          #1d1d1f 0%,
+          #6366f1 35%,
+          #008cff 62%,
+          #d64fa3 100%
+        );
+      background-clip: text;
+      -webkit-background-clip: text;
+    }
+
+    body.dark .gradient-text {
+      background:
+        linear-gradient(
+          110deg,
+          #ffffff 0%,
+          #a9a7ff 35%,
+          #61c8ff 62%,
+          #ff94cf 100%
+        );
+      background-clip: text;
+      -webkit-background-clip: text;
+    }
+
+    .hero-description {
+      max-width: 680px;
+      margin: 30px auto 0;
+      color: var(--secondary);
+      font-size: clamp(18px, 2.2vw, 24px);
+      line-height: 1.55;
+      letter-spacing: -0.02em;
+    }
+
+    .hero-actions {
+      margin-top: 38px;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .button {
+      min-height: 48px;
+      padding: 0 24px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      font-weight: 550;
+      transition:
+        transform 0.2s ease,
+        background 0.2s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+    }
+
+    .button-primary {
+      color: #ffffff;
+      background: var(--accent);
+    }
+
+    .button-primary:hover {
+      background: var(--accent-hover);
+    }
+
+    .button-secondary {
+      border: 1px solid var(--line);
+      background: var(--surface);
+      backdrop-filter: blur(18px);
+    }
+
+    main {
+      width: min(1180px, calc(100% - 36px));
+      margin: 0 auto;
+    }
+
+    .section {
+      padding: 110px 0;
+    }
+
+    .section-heading {
+      max-width: 850px;
+      margin-bottom: 48px;
+    }
+
+    .section-label {
+      margin-bottom: 14px;
+      color: var(--accent);
+      font-size: 16px;
+      font-weight: 650;
+    }
+
+    .section-title {
+      margin: 0;
+      font-size: clamp(40px, 6vw, 72px);
+      line-height: 1.06;
+      letter-spacing: -0.055em;
+    }
+
+    .section-description {
+      max-width: 720px;
+      margin: 22px 0 0;
+      color: var(--secondary);
+      font-size: clamp(18px, 2vw, 23px);
+      line-height: 1.65;
+      letter-spacing: -0.02em;
+    }
+
+    .identity-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .identity-card {
+      position: relative;
+      min-height: 320px;
+      padding: 30px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-large);
+      background: var(--surface-solid);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease;
+    }
+
+    .identity-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.13);
+    }
+
+    .card-number {
+      color: var(--secondary);
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .identity-card h3 {
+      margin: 110px 0 14px;
+      font-size: 34px;
+      letter-spacing: -0.04em;
+    }
+
+    .identity-card p {
+      margin: 0;
+      color: var(--secondary);
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .identity-card::after {
+      content: "";
+      position: absolute;
+      top: -45px;
+      right: -45px;
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      filter: blur(6px);
+      opacity: 0.55;
+    }
+
+    .art::after {
+      background: linear-gradient(135deg, #ff8ca6, #ffcf6f);
+    }
+
+    .management::after {
+      background: linear-gradient(135deg, #67a5ff, #65e5ff);
+    }
+
+    .agriculture::after {
+      background: linear-gradient(135deg, #8ee09f, #d3f47b);
+    }
+
+    .engineering::after {
+      background: linear-gradient(135deg, #b5a2ff, #718cff);
+    }
+
+    .feature {
+      min-height: 620px;
+      padding: 64px;
+      border: 1px solid var(--line);
+      border-radius: 42px;
+      background:
+        radial-gradient(
+          circle at 80% 20%,
+          rgba(111, 142, 255, 0.3),
+          transparent 34%
+        ),
+        radial-gradient(
+          circle at 15% 85%,
+          rgba(255, 123, 196, 0.22),
+          transparent 32%
+        ),
+        var(--surface-solid);
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+    }
+
+    .feature-top {
+      max-width: 740px;
+    }
+
+    .feature-kicker {
+      color: var(--secondary);
+      font-size: 17px;
+      font-weight: 600;
+    }
+
+    .feature h3 {
+      max-width: 850px;
+      margin: 16px 0 0;
+      font-size: clamp(42px, 6vw, 76px);
+      line-height: 1.05;
+      letter-spacing: -0.055em;
+    }
+
+    .feature-bottom {
+      max-width: 680px;
+      color: var(--secondary);
+      font-size: 20px;
+      line-height: 1.7;
+    }
+
+    .work-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 20px;
+    }
+
+    .work-card {
+      min-height: 430px;
+      padding: 42px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-large);
+      background: var(--surface-solid);
+      box-shadow: var(--shadow);
+    }
+
+    .work-card h3 {
+      margin: 0 0 18px;
+      font-size: 34px;
+      letter-spacing: -0.04em;
+    }
+
+    .work-card p {
+      color: var(--secondary);
+      font-size: 18px;
+      line-height: 1.75;
+    }
+
+    .skill-list {
+      margin-top: 40px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .skill {
+      padding: 10px 15px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--secondary);
+      background: var(--surface);
+      font-size: 14px;
+    }
+
+    .quote-card {
+      color: #ffffff;
+      background:
+        linear-gradient(150deg, #111827 0%, #243b68 52%, #664c86 100%);
+    }
+
+    .quote-card p {
+      color: rgba(255, 255, 255, 0.72);
+    }
+
+    .quote {
+      margin-top: 90px;
+      font-size: 28px;
+      line-height: 1.45;
+      letter-spacing: -0.03em;
+    }
+
+    .journal-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .journal-card {
+      min-height: 350px;
+      padding: 30px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-medium);
+      background: var(--surface-solid);
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+    }
+
+    .journal-card:hover {
+      transform: translateY(-7px);
+    }
+
+    .journal-category {
+      color: var(--accent);
+      font-size: 14px;
+      font-weight: 650;
+    }
+
+    .journal-card h3 {
+      margin: 20px 0 0;
+      font-size: 29px;
+      line-height: 1.18;
+      letter-spacing: -0.04em;
+    }
+
+    .journal-card p {
+      margin: 0;
+      color: var(--secondary);
+      line-height: 1.7;
+    }
+
+    .contact {
+      padding: 130px 30px;
+      text-align: center;
+    }
+
+    .contact h2 {
+      max-width: 900px;
+      margin: 0 auto;
+      font-size: clamp(48px, 7vw, 88px);
+      line-height: 1.02;
+      letter-spacing: -0.06em;
+    }
+
+    .contact p {
+      max-width: 620px;
+      margin: 25px auto 0;
+      color: var(--secondary);
+      font-size: 20px;
+      line-height: 1.65;
+    }
+
+    footer {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 30px 0 40px;
+      border-top: 1px solid var(--line);
+      color: var(--secondary);
+      font-size: 13px;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(34px);
+      transition:
+        opacity 0.8s ease,
+        transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 950px) {
+      .identity-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .work-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .journal-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .feature {
+        min-height: 540px;
+        padding: 42px;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .nav-links a {
+        display: none;
+      }
+
+      .hero {
+        min-height: 92vh;
+        padding-top: 115px;
+      }
+
+      .identity-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .identity-card {
+        min-height: 270px;
+      }
+
+      .identity-card h3 {
+        margin-top: 70px;
+      }
+
+      .section {
+        padding: 80px 0;
+      }
+
+      .feature {
+        min-height: 500px;
+        padding: 30px;
+        border-radius: 30px;
+      }
+
+      .work-card {
+        min-height: auto;
+        padding: 30px;
+      }
+
+      footer {
+        flex-direction: column;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="nav">
+    <div class="nav-inner">
+      <a class="brand" href="#home">谢辰龙</a>
+
+      <div class="nav-links">
+        <a href="#about">关于</a>
+        <a href="#work">经历</a>
+        <a href="#journal">思考</a>
+        <a href="#contact">联系</a>
+
+        <button
+          class="theme-button"
+          id="themeButton"
+          type="button"
+          aria-label="切换深色模式"
+          title="切换深色模式"
+        >
+          ◐
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero" id="home">
+    <div class="glow glow-one"></div>
+    <div class="glow glow-two"></div>
+    <div class="glow glow-three"></div>
+
+    <div class="hero-content">
+      <div class="eyebrow">Xie Chenlong · Personal Website</div>
+
+      <h1>
+        不同经历，<br />
+        <span class="gradient-text">一种方向。</span>
+      </h1>
+
+      <p class="hero-description">
+        艺术训练感受力，经管塑造判断力，农业帮助我理解真实世界，
+        工程让我学会把事情落地。
+      </p>
+
+      <div class="hero-actions">
+        <a class="button button-primary" href="#about">进一步了解</a>
+        <a class="button button-secondary" href="#journal">阅读我的思考</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="section reveal" id="about">
+      <div class="section-heading">
+        <div class="section-label">关于我</div>
+
+        <h2 class="section-title">
+          跨界，不是分散。<br />
+          而是建立连接。
+        </h2>
+
+        <p class="section-description">
+          我是一名工程经济管理从业者，也长期关注艺术表达、农业经济、
+          城市观察与个人成长。我希望在现实世界里把事情做好，
+          也为自己保留持续思考的空间。
+        </p>
+      </div>
+
+      <div class="identity-grid">
+        <article class="identity-card art">
+          <span class="card-number">01</span>
+          <h3>艺术</h3>
+          <p>保持感受力、审美与表达，让理性工作之外仍有温度。</p>
+        </article>
+
+        <article class="identity-card management">
+          <span class="card-number">02</span>
+          <h3>经管</h3>
+          <p>理解成本、合同、资源与风险，让复杂项目变得更加可控。</p>
+        </article>
+
+        <article class="identity-card agriculture">
+          <span class="card-number">03</span>
+          <h3>农业</h3>
+          <p>关注土地、产业与真实社会，理解经济运行背后的基础逻辑。</p>
+        </article>
+
+        <article class="identity-card engineering">
+          <span class="card-number">04</span>
+          <h3>工程</h3>
+          <p>尊重流程、细节与结果，把想法转化为可以交付的成果。</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section reveal">
+      <div class="feature">
+        <div class="feature-top">
+          <div class="feature-kicker">我的长期方向</div>
+
+          <h3>
+            在现实世界里做事，<br />
+            在精神世界里寻找答案。
+          </h3>
+        </div>
+
+        <div class="feature-bottom">
+          我并不急于给自己贴上单一标签。比起被一个职业或身份定义，
+          我更愿意通过长期学习、持续工作和真实作品，
+          一点点建立属于自己的坐标。
+        </div>
+      </div>
+    </section>
+
+    <section class="section reveal" id="work">
+      <div class="section-heading">
+        <div class="section-label">专业与经历</div>
+
+        <h2 class="section-title">
+          让复杂问题，<br />
+          变得清晰而可控。
+        </h2>
+
+        <p class="section-description">
+          目前主要从事工程项目经济管理相关工作，
+          持续积累合同管理、验工计价、成本分析与风险控制经验。
+        </p>
+      </div>
+
+      <div class="work-grid">
+        <article class="work-card">
+          <h3>工程经济管理</h3>
+
+          <p>
+            我关注的不只是数字本身，更关注数字背后的合同逻辑、
+            项目边界、风险来源与执行路径。
+          </p>
+
+          <div class="skill-list">
+            <span class="skill">合同管理</span>
+            <span class="skill">验工计价</span>
+            <span class="skill">成本分析</span>
+            <span class="skill">风险识别</span>
+            <span class="skill">项目沟通</span>
+            <span class="skill">过程管理</span>
+          </div>
+        </article>
+
+        <article class="work-card quote-card">
+          <h3>我的工作观</h3>
+
+          <p>
+            真正的专业，不是把简单问题说复杂，
+            而是能够从复杂信息中找到关键变量。
+          </p>
+
+          <div class="quote">
+            “既要看见问题，<br />
+            也要推动问题解决。”
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section reveal" id="journal">
+      <div class="section-heading">
+        <div class="section-label">记录与思考</div>
+
+        <h2 class="section-title">
+          写下来，<br />
+          才能看见自己走过的路。
+        </h2>
+
+        <p class="section-description">
+          这里将记录我的工作观察、读书笔记、城市影像，
+          以及关于成长与选择的长期思考。
+        </p>
+      </div>
+
+      <div class="journal-grid">
+        <article class="journal-card">
+          <div>
+            <span class="journal-category">工作观察</span>
+            <h3>工程项目中，真正重要的是什么？</h3>
+          </div>
+
+          <p>理解规则、尊重流程，也保持解决实际问题的能力。</p>
+        </article>
+
+        <article class="journal-card">
+          <div>
+            <span class="journal-category">阅读与学习</span>
+            <h3>从农业经济学重新理解真实世界。</h3>
+          </div>
+
+          <p>土地、产业、人口和制度，共同构成经济运行的底层结构。</p>
+        </article>
+
+        <article class="journal-card">
+          <div>
+            <span class="journal-category">艺术与生活</span>
+            <h3>审美并不是装饰，而是一种判断力。</h3>
+          </div>
+
+          <p>摄影、绘画、文字与旅行，帮助我保存对生活的感受。</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="contact reveal" id="contact">
+      <h2>
+        保持真诚，<br />
+        持续生长。
+      </h2>
+
+      <p>
+        这是我的个人主页，也是一个刚刚开始的长期项目。
+        未来会逐步加入文章、摄影、绘画和更多真实经历。
+      </p>
+
+      <div class="hero-actions">
+        <a class="button button-primary" href="mailto:your-email@example.com">
+          联系我
+        </a>
+
+        <a class="button button-secondary" href="#home">
+          返回顶部
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>© <span id="year"></span> 谢辰龙</span>
+    <span>Designed with clarity, curiosity and care.</span>
+  </footer>
+
+  <script>
+    const themeButton = document.getElementById("themeButton");
+    const savedTheme = localStorage.getItem("theme");
+    const prefersDark = window.matchMedia(
+      "(prefers-color-scheme: dark)"
+    ).matches;
+
+    if (savedTheme === "dark" || (!savedTheme && prefersDark)) {
+      document.body.classList.add("dark");
+    }
+
+    themeButton.addEventListener("click", () => {
+      document.body.classList.toggle("dark");
+
+      const theme = document.body.classList.contains("dark")
+        ? "dark"
+        : "light";
+
+      localStorage.setItem("theme", theme);
+    });
+
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+
+    const revealElements = document.querySelectorAll(".reveal");
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.12
+      }
+    );
+
+    revealElements.forEach((element) => observer.observe(element));
+  </script>
+</body>
+</html>
